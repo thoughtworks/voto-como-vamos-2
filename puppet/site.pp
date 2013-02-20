@@ -6,9 +6,11 @@ stage {
 
 node default {
 
-  class { 'apt':
-    stage             => 'bootstrap',
-    always_apt_update => true,
+  class {
+    'apt':
+      stage             => 'bootstrap',
+      always_apt_update => true,
+    ;
   }
 
   include postgresql::server
