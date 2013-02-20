@@ -23,4 +23,23 @@ node default {
     ;
   }
 
+  include nginx
+
+  nginx::resource::upstream {
+    'vcv':
+      ensure  => 'present',
+      members => [
+        'localhost:3000',
+      ],
+    ;
+  }
+
+  nginx::resource::vhost {
+    'dev.votocomovamos.com.br':
+      ensure      => 'present',
+      proxy       => 'http://vcv',
+      listen_port => 80,
+    ;
+  }
+
 }
