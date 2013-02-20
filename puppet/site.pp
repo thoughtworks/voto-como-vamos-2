@@ -44,4 +44,5 @@ node default {
     ;
   }
 
+  include redis
 }
