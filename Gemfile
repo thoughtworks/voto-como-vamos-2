@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'pg'
 
+gem 'koala'
+gem 'koala-rails'
+
 gem 'slim'
 gem 'bluecloth'
 gem 'rdiscount'

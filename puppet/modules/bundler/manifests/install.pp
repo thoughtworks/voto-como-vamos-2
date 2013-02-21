@@ -29,8 +29,8 @@ define bundler::install(
   else        { $without_real = '' }
 
   $command = $deployment ? {
-    true  => "bundle install --deployment${without_real}",
-    false => "bundle install${without_real}",
+    true  => "bundle install --verbose --deployment${without_real}",
+    false => "bundle install --verbose ${without_real}",
   }
 
   exec { "bundle install ${name}":
@@ -40,7 +40,7 @@ define bundler::install(
     cwd         => $name,
     path        => "${gem_bin_path}:/bin:/usr/bin:/usr/local/bin",
     unless      => 'bundle check',
-    require     => Package['bundler'],
+    require     => Rbenv::Gem['rbenv::bundler vagrant 1.9.3-p385'],
     logoutput   => on_failure,
     environment => "HOME='${name}'",
   }
