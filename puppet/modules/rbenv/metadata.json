@@ -1,0 +1,109 @@
+{
+  "name": "alup-rbenv",
+  "version": "1.2.0",
+  "source": "UNKNOWN",
+  "author": "alup",
+  "license": "MIT",
+  "summary": "rbenv Ruby Version Manager module",
+  "description": "Puppet module for rbenv Ruby Version Manager",
+  "project_page": "https://github.com/alup/puppet-rbenv",
+  "dependencies": [
+
+  ],
+  "types": [
+    {
+      "name": "rbenvgem",
+      "doc": "A Ruby Gem installed inside an rbenv-installed Ruby",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "  Valid values are `present` (also called `installed`), `absent`, `latest`.  Values can match `/./`."
+        }
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "Gem qualified name within an rbenv repository"
+        },
+        {
+          "name": "gemname",
+          "doc": "The Gem name"
+        },
+        {
+          "name": "ruby",
+          "doc": "The ruby interpreter version"
+        },
+        {
+          "name": "rbenv",
+          "doc": "The rbenv root"
+        },
+        {
+          "name": "user",
+          "doc": "The rbenv owner"
+        }
+      ],
+      "providers": [
+        {
+          "name": "default",
+          "doc": "Maintains gems inside an RBenv setup\n\nRequired binaries: `su`."
+        }
+      ]
+    }
+  ],
+  "checksums": {
+    "AUTHORS": "41bce6ef435e4c4fb01a3c7662477d58",
+    "CHANGELOG.md": "d075b1f284329fff6d5175dbb3278cbc",
+    "Gemfile": "f68769c7bd5266f1a4de0607fd78d17a",
+    "Gemfile.lock": "571d1b5c4b633773b97a88c8a2974581",
+    "Modulefile": "3bb3b412457d726bb0a7318ac4562fa4",
+    "README.md": "09fcaeb15a0ad5096f1c6f1ff6e999fb",
+    "Rakefile": "7bb6178549213331858bf2512a4f6a17",
+    "TODO": "829d2a329bf2974b9d8af868cf35db94",
+    "bin/autospec": "d4fde3f4a9f1e5fd339228026654cb70",
+    "bin/facter": "54901e1d789da4ff3303d45a6d66fc03",
+    "bin/filebucket": "770eee5e0fb7f1013abce8041bc9d407",
+    "bin/hiera": "60a41938163cc8af0b56456abcbdfcd3",
+    "bin/htmldiff": "8d551a540666732a11d6caa9aa3a0e68",
+    "bin/ldiff": "3104dda81ce6a8c0bf122df6ac851365",
+    "bin/pi": "b72c410b2de13e2f58526a53cdd8c6b2",
+    "bin/puppet": "5349ed70b05332a13b83ba8077dd0043",
+    "bin/puppet-lint": "7f9089954f23d779e8ce05a4a53cf440",
+    "bin/puppet-module": "5598cb513ff52a621e80d124010ddccb",
+    "bin/puppetca": "bc1f6643a1f5752c10f9cd1d967f6339",
+    "bin/puppetd": "90205a5cf917d78fd2be85a565b7fbc5",
+    "bin/puppetdoc": "93170c3ea411bce6d11d8d6fc96bdf49",
+    "bin/puppetmasterd": "dd139c09d5e3f04c103f4ba80221432d",
+    "bin/puppetqd": "f3e6ac649b6e2b9f637dee3c7e6c8c1e",
+    "bin/puppetrun": "de8fea72006efd65a4efd0c092e6dd39",
+    "bin/rake": "d09495e1a29ed0015941718d92deb28b",
+    "bin/ralsh": "ac7d134c175adfdd682f5b73b157e81e",
+    "bin/rspec": "00ed29f02ccbfaf09483109846c4a9c3",
+    "bin/rspec-puppet-init": "6cd42b0ad1382d8a870c1f75caf67a50",
+    "lib/puppet/provider/rbenvgem/default.rb": "e4f6ccda50b6b34aa1cacbb565082fa0",
+    "lib/puppet/type/rbenvgem.rb": "a3d2f7f9e4ce273d2d58ac86a59377c5",
+    "manifests/bundle.pp": "352b95944faacc82cfb15ef3e8eadd36",
+    "manifests/client.pp": "c6be48e076e539dfb67f64fa20dc26d6",
+    "manifests/compile.pp": "050f1bedccea7e4bf060baa002bf9e93",
+    "manifests/definition.pp": "1cfd81042f40aaf34dbb32936c2a3a3a",
+    "manifests/dependencies/centos.pp": "71057409e9760e3d53ad7f2a9d862874",
+    "manifests/dependencies/suse.pp": "fe7e6bffa09f1bc30f21f77e9c911ada",
+    "manifests/dependencies/ubuntu.pp": "803d58aabe0f752e5e1182b15f1991fe",
+    "manifests/dependencies.pp": "3a23ca0524928ae39396c451d938319e",
+    "manifests/gem.pp": "d4614ec9f988e707ad7b852169cb9e20",
+    "manifests/install.pp": "93f1a0ff0cb1b2845567871299161d79",
+    "manifests/plugin/rbenvvars.pp": "e9f977b7d5f4c1af85f65b60e04bf145",
+    "manifests/plugin/rubybuild.pp": "d8f5df37e2e4f0dbd83145f7cdabf79f",
+    "manifests/plugin.pp": "cd89bbf44c3418fefb26a49117957617",
+    "spec/classes/dependencies_spec.rb": "6f39406d29bb15e4e2b9155ae09f0daf",
+    "spec/defines/rbenv__compile_spec.rb": "b9e07a69c8cd7acbd887fdfba870ddd8",
+    "spec/defines/rbenv__definition_spec.rb": "a94134d4a5be5f021ae53489398f74a3",
+    "spec/defines/rbenv__install_spec.rb": "044888bc54fc109eb0c22619bca86ffb",
+    "spec/defines/rbenv__plugin__rbenvvars_spec.rb": "781cdf9a2a0e0f466636d981d19034b0",
+    "spec/defines/rbenv__plugin__rubybuild_spec.rb": "24132e11ad1558227175280ee8fda08f",
+    "spec/defines/rbenv__plugin_spec.rb": "0b172008a61009ceac28625f4788ff4b",
+    "spec/fixtures/manifests/site.pp": "d41d8cd98f00b204e9800998ecf8427e",
+    "spec/spec_helper.rb": "d5f3f46cba1721d2ad62fe96aad002c6",
+    "templates/Gemfile.erb": "c1b501d75ff589a4d2f54c1fc2674283",
+    "templates/dot.rbenvrc.erb": "dc88eda08086172606be9e1b4b87d90e"
+  }
+}
