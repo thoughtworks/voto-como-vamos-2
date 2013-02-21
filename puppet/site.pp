@@ -69,8 +69,6 @@ node default {
 
   bundler::install {
     '/vagrant':
-      user         => 'vagrant',
-      group        => 'vagrant',
       gem_bin_path => $gem_bin_path,
     ;
   }

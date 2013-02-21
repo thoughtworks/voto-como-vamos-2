@@ -8,14 +8,13 @@ Vagrant::Config.run do |config|
 
   options = {
     module_path: 'puppet/modules',
-    options:     ['--verbose', '--debug'],
     facter:      { fqdn: 'precise.vagrant' }
   }
 
   config.vm.provision :puppet, options do |puppet|
     puppet.manifests_path = 'puppet'
     puppet.manifest_file  = 'site.pp'
-    puppet.options        = %w[ --libdir=\\$modulepath/rbenv/lib ]
+    puppet.options        = %w[ --libdir=\\$modulepath/rbenv/lib --verbose --debug]
   end
 
 end

@@ -38,7 +38,7 @@ define bundler::install(
     group       => $group,
     command     => $command,
     cwd         => $name,
-    path        => $gem_bin_path,
+    path        => "${gem_bin_path}:/bin:/usr/bin:/usr/local/bin",
     unless      => 'bundle check',
     require     => Package['bundler'],
     logoutput   => on_failure,
