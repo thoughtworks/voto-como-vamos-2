@@ -17,6 +17,7 @@ NameVirtualHost <%= vhost_name %>:<%= port %>
 
   <Directory <%= docroot %>>
     PassengerEnabled on
+    RackEnv development
     Options <%= options %>
     AllowOverride <%= Array(override).join(' ') %>
     Order allow,deny
