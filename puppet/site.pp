@@ -40,6 +40,8 @@ node default {
     ;
   }
 
+  $gem_bin_path = '/opt/vagrant_ruby/bin'
+
   class {
     'apache':
 
@@ -51,7 +53,7 @@ node default {
       passenger_version      => '3.0.19',
       passenger_ruby         => '/home/vagrant/.rbenv/shims/ruby',
       gem_path               => '/opt/vagrant_ruby/lib/ruby/gems/1.8/gems',
-      gem_binary_path        => '/opt/vagrant_ruby/bin',
+      gem_binary_path        => $gem_bin_path,
     ;
   }
 
@@ -62,6 +64,14 @@ node default {
       template    => 'apache/vhost-passenger.conf.erb',
       serveradmin => 'vcv@lixo.org',
       docroot     => '/vagrant/public',
+    ;
+  }
+
+  bundler::install {
+    '/vagrant':
+      user         => 'vagrant',
+      group        => 'vagrant',
+      gem_bin_path => $gem_bin_path,
     ;
   }
 

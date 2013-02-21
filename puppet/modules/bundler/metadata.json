@@ -1,0 +1,25 @@
+{
+  "name": "ploperations-bundler",
+  "version": "1.0.0",
+  "source": "https://github.com/puppetlabs-operations/puppet-bundler",
+  "author": "Puppet Labs Operations",
+  "license": "Apache 2",
+  "summary": "Install and manage bundler",
+  "description": "UNKNOWN",
+  "project_page": "https://github.com/puppetlabs-operations/puppet-bundler",
+  "dependencies": [
+
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "LICENSE": "d619768bccce138ace053fae9d6c4393",
+    "Modulefile": "c974d6cfe364c3760c7aafd7853caf31",
+    "README.markdown": "3a5f1969012efad0795c12ded5cfe8bd",
+    "manifests/bundle.pp": "4b346a1b69d7aefe482ce7f4aa1e8ba3",
+    "manifests/init.pp": "7ca314bdd93173aca586f8e8bb61db35",
+    "manifests/install.pp": "44ef9d3584722f20628c71c54bca59a0",
+    "templates/Gemfile": "aa3ee35c0d85a4156fff84b563954816"
+  }
+}
