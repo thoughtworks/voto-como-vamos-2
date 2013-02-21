@@ -14,14 +14,14 @@ NameVirtualHost <%= vhost_name %>:<%= port %>
 <% end -%>
 
   DocumentRoot <%= docroot %>
+  PassengerEnabled on
+  RackAutoDetect on
+  RackEnv development
+  PassengerMinInstances 1
 
   <Directory <%= docroot %>>
-    PassengerEnabled on
-    RackEnv development
-    Options <%= options %>
-    AllowOverride <%= Array(override).join(' ') %>
-    Order allow,deny
-    allow from all
+    Allow from all
+    Options -MultiViews
   </Directory>
 
   ErrorLog <%= logroot %>/<%= name %>_error.log
