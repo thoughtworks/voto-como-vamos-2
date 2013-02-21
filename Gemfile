@@ -2,6 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'pg'
+
+gem 'slim'
+gem 'bluecloth'
+gem 'rdiscount'
+
 gem 'sqlite3'
 gem 'rack-cache', '= 1.2.0'
 
