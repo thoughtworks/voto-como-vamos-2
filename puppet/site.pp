@@ -46,7 +46,7 @@ node default {
     ;
 
     'passenger':
-      require                => rbenv::compile['1.9.3-p385'],
+      require                => Rbenv::Compile['1.9.3-p385'],
       passenger_package      => 'passenger',
       passenger_version      => '3.0.9',
       passenger_ruby         => '/home/vagrant/.rbenv/shims/ruby',
