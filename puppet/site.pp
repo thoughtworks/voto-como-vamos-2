@@ -4,12 +4,12 @@ stage {
   ;
 }
 
-node default {
+class basic_services {
 
   class {
     'apt':
       stage             => 'bootstrap',
-      always_apt_update => true,
+      always_apt_update => false,
     ;
   }
 
@@ -66,11 +66,14 @@ node default {
       docroot     => '/vagrant/public',
     ;
   }
+}
+
+node default {
+  include basic_services
 
   bundler::install {
     '/vagrant':
       gem_bin_path => $gem_bin_path,
     ;
   }
-
 }
