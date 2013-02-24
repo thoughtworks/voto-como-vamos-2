@@ -44,7 +44,9 @@ sourced, it provides a few handy shortcuts:
 $ source vcv-env
 $ v whoami
 vagrant
+```
 
+```
 # run any rake task
 $ vr about
 About your application's environment
