@@ -27,4 +27,6 @@ group :assets do
   gem 'libv8'
 end
 
-gem 'jquery-rails'
+group :test, :development do
+  gem 'rspec-rails'
+end
