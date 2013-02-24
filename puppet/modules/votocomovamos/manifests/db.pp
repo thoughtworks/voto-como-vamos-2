@@ -1,5 +1,7 @@
 class votocomovamos::db {
 
+  include redis
+
   include postgresql::server
   include postgresql::client
   include postgresql::devel

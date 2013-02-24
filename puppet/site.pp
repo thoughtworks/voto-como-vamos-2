@@ -13,7 +13,6 @@ node default {
     ;
   }
 
-  include redis
   include votocomovamos::db
   include votocomovamos::app
 }
