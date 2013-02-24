@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'jquery-rails'
+gem 'd3-rails'
 
 gem 'pg'
 gem 'activerecord-postgres-hstore'
