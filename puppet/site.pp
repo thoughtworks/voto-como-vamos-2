@@ -19,12 +19,26 @@ node default {
   include postgresql::devel
 
   postgresql::db {
-    'vcv':
+
+    'vcv_production':
       user     => 'vcv',
       password => 'vcv',
       charset  => 'UTF-8',
     ;
-  }
+
+    'vcv_test':
+      user     => 'vcv',
+      password => 'vcv',
+      charset  => 'UTF-8',
+    ;
+
+    'vcv_development':
+      user     => 'vcv',
+      password => 'vcv',
+      charset  => 'UTF-8',
+    ;
+
+ }
 
   rbenv::install {
     'vagrant':
