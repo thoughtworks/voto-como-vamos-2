@@ -5,7 +5,7 @@
 #
 ################################################################################
 class wget($version='installed') {
-  
+
   if $::operatingsystem != 'Darwin' {
     package { "wget": ensure => $version }
   }
@@ -67,20 +67,20 @@ define wget::authfetch($source,$destination,$user,$password="",$timeout="0",$ver
     true  => "--verbose",
     false => "--no-verbose"
   }
-  
+
   case $::operatingsystem {
     'Darwin': {
-      # This is to work around an issue with macports wget and out of date CA cert bundle.  This requires 
+      # This is to work around an issue with macports wget and out of date CA cert bundle.  This requires
       # installing the curl-ca-bundle package like so:
       #
-      # sudo port install curl-ca-bundle      
+      # sudo port install curl-ca-bundle
       $wgetrc_content = "password=$password\nCA_CERTIFICATE=/opt/local/share/curl/curl-ca-bundle.crt\n"
-     } 
+     }
      default: {
       $wgetrc_content = "password=$password"
     }
   }
-  
+
   file { "/tmp/wgetrc-$name":
     owner => root,
     mode => 600,
