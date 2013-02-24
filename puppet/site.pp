@@ -98,7 +98,7 @@ node default {
 
   $passenger_version = '3.0.19'
   $gem_path = '/opt/vagrant_ruby/lib/ruby/gems/1.8/gems'
-  $gem_bin_path = '/home/vagrant/.rbenv/shims'
+
 
   class {
     'apache':
@@ -109,7 +109,7 @@ node default {
       passenger_version      => $passenger_version,
       passenger_ruby         => '/home/vagrant/.rbenv/shims/ruby',
       gem_path               => $gem_path,
-      gem_binary_path        => $gem_bin_path,
+      gem_binary_path        => '/opt/vagrant_ruby/bin',
       mod_passenger_location => "${gem_path}/passenger-${passenger_version}/ext/apache2/mod_passenger.so",
       require                => Bundler::Install['/vagrant'],
     ;
@@ -129,7 +129,7 @@ node default {
 
   bundler::install {
     '/vagrant':
-      gem_bin_path => $gem_bin_path,
+      gem_bin_path => '/home/vagrant/.rbenv/shims',
       user         => 'vagrant',
       group        => 'vagrant',
       require      => Rbenv::Gem['rbenv::bundler vagrant 1.9.3-p385'],

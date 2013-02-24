@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails'
+
 gem 'pg'
+gem 'activerecord-postgres-hstore'
 
 gem 'koala'
 gem 'koala-rails'
@@ -10,8 +12,12 @@ gem 'slim'
 gem 'bluecloth'
 gem 'rdiscount'
 
-gem 'sqlite3'
 gem 'rack-cache', '= 1.2.0'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
