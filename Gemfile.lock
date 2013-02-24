@@ -57,10 +57,6 @@ GEM
     i18n (0.6.1)
     journey (1.0.4)
     json (1.7.7)
-    koala (0.10.0)
-      json (>= 1.0)
-    koala-rails (0.1.9)
-      koala (~> 0.10.0)
     libv8 (3.3.10.4)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -143,8 +139,6 @@ DEPENDENCIES
   binding_of_caller
   bluecloth
   coffee-rails (~> 3.2.1)
-  koala
-  koala-rails
   libv8
   pg
   rack-cache (= 1.2.0)

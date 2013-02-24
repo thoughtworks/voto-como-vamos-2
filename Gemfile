@@ -5,9 +5,6 @@ gem 'rails'
 gem 'pg'
 gem 'activerecord-postgres-hstore'
 
-gem 'koala'
-gem 'koala-rails'
-
 gem 'slim'
 gem 'bluecloth'
 gem 'rdiscount'
