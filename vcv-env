@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Runs whatever inside the vagrant box
+function v {
+  vagrant ssh -c "cd /vagrant && $*"
+}
+
+# Runs whatever rake task inside the vagrant box
+function vr {
+  v "rake $*"
+}
+
+
