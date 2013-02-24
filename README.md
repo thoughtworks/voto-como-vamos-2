@@ -37,17 +37,17 @@ To do any work, we'd rather rely on the Vagrant setup (otherwise,
 you'd have to run Redis, PostgreSQL and the full stack on your local
 development environment, which can be unpleasant to set up). If you
 want to make that easier, have a look at the `vcv-env` script. When
-sourced, it provides a few handy shortcuts:
+sourced, it provides a few handy shortcuts. To run any command:
 
 ```
-# run any command
 $ source vcv-env
 $ v whoami
 vagrant
 ```
 
+Or to run any rake task:
+
 ```
-# run any rake task
 $ vr about
 About your application's environment
 Ruby version              1.9.3 (x86_64-linux)
