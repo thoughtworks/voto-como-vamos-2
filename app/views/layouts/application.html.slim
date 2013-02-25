@@ -1,10 +1,11 @@
 doctype html
 html
   head
-    title Voto Como Vamos
+    title = "Voto Como Vamos - #{content_for :title}"
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  body
-    = yield
+    link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Yanone+Kaffeesatz:200&subset=latin,latin-ext' rel='stylesheet' type='text/css'
 
+  body.app
+    = yield

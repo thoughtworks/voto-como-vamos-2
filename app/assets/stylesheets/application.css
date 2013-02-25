@@ -11,3 +11,15 @@
  *= require_self
  *= require_tree .
  */
+
+body.app {
+  margin: 0 0 0 1em;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.app h1 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  margin: .5em .5em .5em 0;
+  font-size: 24pt;
+}
