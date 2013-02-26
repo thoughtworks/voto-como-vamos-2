@@ -19,13 +19,16 @@ body.app {
 }
 
 #container {
+  width: 90%;
 
   #nav {
     float: left;
+    width: 30%;
   }
 
   #content {
     float: right;
+    width: 70%;
   }
 }
 
