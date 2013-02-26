@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+$blackish: #3f3f3f;
+
 html {
   height: 100%;
 }
@@ -22,6 +24,7 @@ body {
   width: 100%;
   font-family: 'Source Sans Pro', sans-serif !important;
   height: 100%;
+  color: $blackish;
 }
 
 a {
@@ -41,13 +44,15 @@ a:hover {
     float: left;
     width: 30%;
 
-    h1 {
+    .logo {
       font-family: 'Yanone Kaffeesatz', sans-serif;
       font-size: 2.5em;
       margin-bottom: .5em;
+      width: 87.5%;
+      text-align: center;
 
       a {
-        color: black;
+        color: $blackish;
       }
     }
 
@@ -62,14 +67,14 @@ a:hover {
           width: 80%;
           text-transform: uppercase;
           font-size: 80%;
-          color: black;
+          color: $blackish;
           background-color: #eee;
           margin: 5px;
           padding: .25em .25em .25em 1em;
         }
-        
+
         a:hover {
-          background-color: black;
+          background-color: $blackish;
           color: #eee;
           text-decoration: none;
         }
