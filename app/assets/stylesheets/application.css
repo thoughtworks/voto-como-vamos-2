@@ -18,6 +18,17 @@ body.app {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+#container {
+
+  #nav {
+    float: left;
+  }
+
+  #content {
+    float: right;
+  }
+}
+
 .app h1 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   margin: .5em .5em .5em 0;
