@@ -8,4 +8,10 @@ html
     link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Yanone+Kaffeesatz:200&subset=latin,latin-ext' rel='stylesheet' type='text/css'
 
   body.app
-    = yield
+    #container
+      #nav
+        h1 Voto Como Vamos
+        = content_for :nav
+
+      #content
+        = yield
