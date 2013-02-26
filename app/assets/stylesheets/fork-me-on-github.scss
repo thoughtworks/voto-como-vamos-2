@@ -4,7 +4,9 @@
   width: 149px;
   padding: 0;
   margin: 0;
-
+  z-index: 1000;
+  position: relative;
+  
   a {
     display: block;
     width: 165px;
