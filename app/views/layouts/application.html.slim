@@ -8,10 +8,22 @@ html
     link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Yanone+Kaffeesatz:200&subset=latin,latin-ext' rel='stylesheet' type='text/css'
 
   body.app
+
+    #banner
+      a href="http://github.com/thoughtworks/voto-como-vamos-2" Fork me on GitHub
+
     #container
       #nav
-        h1 Voto Como Vamos
+        h1
+          a href=welcome_path Voto Como Vamos
         = content_for :nav
 
       #content
         = yield
+
+    #footer
+      p
+        | &copy; 2013 Voto Como Vamos. Todos os direitos reservados.
+      p
+        a href="http://github.com/thoughtworks/voto-como-vamos-2" GitHub
+      = content_for :footer

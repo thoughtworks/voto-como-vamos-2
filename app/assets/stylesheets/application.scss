@@ -12,28 +12,80 @@
  *= require_tree .
  */
 
-body.app {
-  margin: 0 0 0 1em;
+html {
+  height: 100%;
+}
+
+body {
   padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+  width: 100%;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 #container {
+  margin: 1em 5% 1em 5%;
   width: 90%;
+  min-height: 90%;
 
   #nav {
     float: left;
     width: 30%;
+
+    h1 {
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: .5em;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+
+    ul {
+      margin-top: 1em;
+
+      li {
+        line-height: 2em;
+
+        a {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
   }
 
   #content {
     float: right;
-    width: 70%;
+    width: 62.5%;
+
+    h2 {
+      font-size: 2em;
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+
+    p {
+      margin-top: 2em;
+      margin-bottom: 2em;
+      line-height: 1.2em;
+    }
   }
 }
 
-.app h1 {
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  margin: .5em .5em .5em 0;
-  font-size: 1.5em;
+#footer {
+  float: left;
+  width: 100%;
+  font-size: 9pt;
+  text-align: center;
 }
