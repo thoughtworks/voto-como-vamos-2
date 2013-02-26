@@ -56,6 +56,21 @@ a:hover {
       }
     }
 
+    #counter {
+      margin: 40px 0 0 0;
+      text-align: center;
+      width: 80%;
+
+      p.counter {
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-size: 5em;
+        font-weight: 600;
+        color: #07AFE9;
+        line-height: 1.5em;
+      }
+    }
+
+    
     ul {
       margin-top: 1em;
 
