@@ -13,6 +13,8 @@ gem 'rdiscount'
 
 gem 'rack-cache', '= 1.2.0'
 
+gem 'whenever'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
