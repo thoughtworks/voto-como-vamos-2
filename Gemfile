@@ -1,23 +1,34 @@
 source 'https://rubygems.org'
 
+# basic infrastructure
 gem 'rails'
-gem 'jquery-rails'
-gem 'd3-rails'
+gem 'rack-cache', '= 1.2.0'
 
+# auth
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+
+# sidekiq
 gem 'sidekiq'
-gem 'sinatra' # for sidekiq
+gem 'sidekiq-throttler'
+gem 'sinatra'
+gem 'whenever'
 
+# scraping
+gem 'nokogiri'
+
+# db
 gem 'pg'
 gem 'activerecord-postgres-hstore'
 
+# views
 gem 'slim'
 gem 'bluecloth'
 gem 'rdiscount'
-
-gem 'rack-cache', '= 1.2.0'
-
-gem 'whenever'
-gem 'nokogiri'
+gem 'jquery-rails'
+gem 'd3-rails'
 
 group :development do
   gem 'better_errors'
