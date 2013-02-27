@@ -20,9 +20,9 @@ class AssemblymenWorker
     data.each do |row|
       fix_telefones_in row
       fix_links_in row
+      Assemblyman.create! row
     end
 
-    p data
   end
 
   def fix_links_in(row)
