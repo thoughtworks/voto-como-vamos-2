@@ -17,16 +17,16 @@ class SessionPageWorker
       retry
     end
 
-    titulo = html.css('#sessao_mais_recente').text.split(/\n/)[2].strip.split
+    title = html.css('#sessao_mais_recente').text.split(/\n/)[2].strip.split
 
-    as = AssemblySession.create! {
-      uuid:   Digest::MD5.hexdigest("#{titulo[0]}-#{titulo[4]}-#{titulo[2].gsub(/[^\d]/, '')}"),
-      data:   titulo[0],
-      tipo:   titulo[4],
-      numero: titulo[2].gsub(/[^\d]/, ''),
+    assembly_session = AssemblySession.create! {
+      uuid:   Digest::MD5.hexdigest("#{title[0]}-#{title[4]}-#{title[2].gsub(/[^\d]/, '')}"),
+      data:   title[0],
+      tipo:   title[4],
+      numero: title[2].gsub(/[^\d]/, ''),
     }
 
-    SessionVotesPageWorker.perform_async as.uuid, html
+    SessionVotesPageWorker.perform_async assembly_session.uuid, html
   end
 
 end
