@@ -1,33 +1,18 @@
-
 require 'open-uri'
 require 'uri'
 require 'nokogiri'
 require 'digest/md5'
 
-class SessionsWorker
+class SessionListPageWorker
 
-  BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
+  include Sidekiq::Worker
 
-  def perform
-    index = Nokogiri::HTML open(BASE_URL).read.force_encoding('UTF-8')
-    threads = []
+  def perform(index)
+    links = index.css('a.sessoes @href').map &:text
 
-    threads << Thread.new { processa_sessoes(index.dup) }
-
-    while next_link = index.css('a.next_page @href').first
-      puts next_link.text
-      index = begin
-        Nokogiri::HTML open(URI.join(BASE_URL, next_link.text).to_s).read.force_encoding('UTF-8')
-      rescue => e
-        puts "Got exception #{e}, retrying in #{wait!}..."
-        sleep $wait
-        retry
-      end
-
-      threads << Thread.new { processa_sessoes(index.dup) }
+    links.map do |link|
+      processa_sessao(link)
     end
-
-    threads.map(&:join)
   end
 
   def presencas_da(votacao_detalhes, votacao, sessao)
@@ -51,8 +36,7 @@ class SessionsWorker
     votacao_detalhes = begin
       Nokogiri::HTML open(URI.join(BASE_URL, votacao[:detalhes_link]).to_s).read.force_encoding('UTF-8')
     rescue => e
-      puts "Got exception #{e}, retrying in #{wait!}..."
-      sleep $wait
+      puts "Got exception #{e}"
       retry
     end
 
@@ -102,8 +86,7 @@ class SessionsWorker
     sessao = begin
       Nokogiri::HTML open(URI.join(BASE_URL, link).to_s).read.force_encoding('UTF-8')
     rescue => e
-      puts "Got exception #{e}, retrying in #{wait!}..."
-      sleep $wait
+      puts "Got exception #{e}"
       retry
     end
 
@@ -120,12 +103,18 @@ class SessionsWorker
     end
   end
 
-  def processa_sessoes(index)
-    links = index.css('a.sessoes @href').map &:text
+end
 
-    links.map do |link|
-      processa_sessao(link)
-    end
+class SessionsWorker
+
+  BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
+
+  def perform(url=BASE_URL)
+    index = Nokogiri::HTML open(url).read
+    SessionListPageWorker.perform_async index
+
+    next_link = index.css('a.next_page @href').first
+    SessionsWorker.perform_async URI.join(BASE_URL, next_link.text).to_s if next_link
   end
 
 end
