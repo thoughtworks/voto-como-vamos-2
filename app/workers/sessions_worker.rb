@@ -31,6 +31,32 @@ class SessionVotesPageWorker
     ScraperWiki::save_sqlite(%w[sessao_uuid horario_inicio], data, 'votacoes')
   end
 
+  def detalhes_da(votacao, sessao)
+    votacao_detalhes = begin
+      Nokogiri::HTML open(URI.join(BASE_URL, votacao[:detalhes_link]).to_s).read.force_encoding('UTF-8')
+    rescue => e
+      puts "Got exception #{e}"
+      retry
+    end
+
+    text = votacao_detalhes.xpath('//div[@class="box no-box"]').text
+
+    {
+      uuid: sessao[:uuid],
+      data: sessao[:data],
+      horario_inicio: votacao[:horario],
+      horario_encerramento: text.match(/Encerramento:\s+((\d{2}:?){3})/)[1],
+      proposicao: votacao[:proposicao],
+      tipo: votacao[:tipo],
+      situacao: votacao[:situacao],
+      item_pauta: text.match(/Item pauta:\s+([^\n]+)\n/)[1],
+      ordem_dia: text.match(/Ordem dia:\s+([^\n]+) Resultado/)[1],
+    }.tap do |votacao|
+      data = presencas_da(votacao_detalhes, votacao, sessao)
+      ScraperWiki::save_sqlite(%w[data_sessao tipo_sessao numero_sessao horario_inicio_votacao parlamentar], data, 'presencas')
+    end
+  end
+
   def presencas_da(votacao_detalhes, votacao, sessao)
     table = votacao_detalhes.css('table.list tr')
     table.shift # discarta header
@@ -48,31 +74,6 @@ class SessionVotesPageWorker
     end
   end
 
-  def detalhes_da(votacao, sessao)
-    votacao_detalhes = begin
-      Nokogiri::HTML open(URI.join(BASE_URL, votacao[:detalhes_link]).to_s).read.force_encoding('UTF-8')
-    rescue => e
-      puts "Got exception #{e}"
-      retry
-    end
-
-    text = votacao_detalhes.xpath('//div[@class="box no-box"]').text
-
-    {
-      sessao_uuid: sessao[:sessao_uuid],
-      data: sessao[:data],
-      horario_inicio: votacao[:horario],
-      horario_encerramento: text.match(/Encerramento:\s+((\d{2}:?){3})/)[1],
-      proposicao: votacao[:proposicao],
-      tipo: votacao[:tipo],
-      situacao: votacao[:situacao],
-      item_pauta: text.match(/Item pauta:\s+([^\n]+)\n/)[1],
-      ordem_dia: text.match(/Ordem dia:\s+([^\n]+) Resultado/)[1],
-    }.tap do |votacao|
-      data = presencas_da(votacao_detalhes, votacao, sessao)
-      ScraperWiki::save_sqlite(%w[data_sessao tipo_sessao numero_sessao horario_inicio_votacao parlamentar], data, 'presencas')
-    end
-  end
 
 
 end
