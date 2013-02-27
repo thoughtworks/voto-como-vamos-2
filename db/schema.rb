@@ -11,25 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227042107) do
+ActiveRecord::Schema.define(:version => 20130227221112) do
 
-  create_table "projetos", :force => true do |t|
-    t.text     "ano"
-    t.text     "autores"
-    t.text     "data_lei"
-    t.text     "data_tramitacao"
-    t.text     "ementa"
-    t.text     "materia"
-    t.text     "numero"
-    t.text     "numero_lei"
-    t.text     "setor"
-    t.text     "situacao"
-    t.text     "tipo_lei"
-    t.text     "tipo_sigla"
-    t.text     "veto"
-    t.text     "link"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+  create_table "scraped_data", :force => true do |t|
+    t.string   "kind",       :null => false
+    t.hstore   "data",       :null => false
+    t.string   "sha1",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
+
+  add_index "scraped_data", ["data"], :name => "index_scraped_data_on_data"
 
 end
