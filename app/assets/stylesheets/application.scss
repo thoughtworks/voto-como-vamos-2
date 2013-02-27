@@ -56,12 +56,12 @@ a:hover {
       }
     }
 
-    #counter {
+    #counter-area {
       margin: 40px 0 0 0;
       text-align: center;
       width: 80%;
 
-      p.counter {
+      .counter {
         font-family: 'Yanone Kaffeesatz', sans-serif;
         font-size: 5em;
         font-weight: 600;
@@ -128,13 +128,14 @@ a:hover {
       }
     }
   }
+
   #footer {
-  float: left;
-  width: 100%;
-  font-size: 9pt;
-  text-align: center;
-  position: relative;
-  bottom: 0;
+    float: left;
+    width: 100%;
+    font-size: 9pt;
+    text-align: center;
+    position: relative;
+    bottom: 0;
 }
 
 }
