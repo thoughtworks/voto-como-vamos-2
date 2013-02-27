@@ -4,6 +4,9 @@ gem 'rails'
 gem 'jquery-rails'
 gem 'd3-rails'
 
+gem 'sidekiq'
+gem 'sinatra' # for sidekiq
+
 gem 'pg'
 gem 'activerecord-postgres-hstore'
 
