@@ -1,8 +1,9 @@
 require 'open-uri'
 require 'nokogiri'
 require 'uri'
+require 'digest/sha1'
 
-class AssemblymenWorker
+class AssemblymenScraper
 
   include Sidekiq::Worker
 
@@ -20,7 +21,12 @@ class AssemblymenWorker
     data.each do |row|
       fix_telefones_in row
       fix_links_in row
-      Assemblyman.create! row
+
+      ScrapedData.create!(
+        kind: 'Vereadores',
+        data: row,
+        hash: Digest::SHA1.hexdigest(row[:nome])
+      )
     end
 
   end
