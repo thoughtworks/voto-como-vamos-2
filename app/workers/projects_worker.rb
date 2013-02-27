@@ -10,17 +10,15 @@ class ProjectsWorker
     data = open('http://projetos.camarapoa.rs.gov.br/consultas/em_tramitacao.csv')
 
     dump = []
-    csv = CSV.new(data, col_sep: ';', headers: true).each do |line|
+    CSV.new(data, col_sep: ';', headers: true).each do |line|
       hash = line.to_hash.inject({}) do |a, kv|
-        a.merge(kv[0].downcase.gsub(/[^0-9a-z]/, "_") => kv[1])
+        a.merge(kv[0].downcase.gsub(/[^0-9a-z]/, "_") => (kv[1] || '').strip)
       end
 
       hash['link'] = find_project_href hash['numero']
-      hash['updated_at'] = Time.now.to_i
-      dump << hash
-    end
 
-    p dump
+      Projeto.create! hash
+    end
   end
 
   def find_project_href(number)
