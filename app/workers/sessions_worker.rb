@@ -12,7 +12,7 @@ class SessionVotesPageWorker
   def perform(session_id, session_html)
     tabela = session_html.css('table tr').map(&:text).reject {|x| x == "" }.map {|x| x.split(/\t\t/).map &:strip }
     detalhes_links = session_html.css('table tr a @href').map(&:text).uniq
-    _ = tabela.shift # discarta headers
+    _ = tabela.shift # discard headers
 
     i = 0
     votacoes = tabela.inject([]) do |a, e|
