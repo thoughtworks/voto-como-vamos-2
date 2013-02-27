@@ -17,6 +17,7 @@ gem 'rdiscount'
 gem 'rack-cache', '= 1.2.0'
 
 gem 'whenever'
+gem 'nokogiri'
 
 group :development do
   gem 'better_errors'
