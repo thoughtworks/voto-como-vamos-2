@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class MakeSha1Unique < ActiveRecord::Migration
 
   def up
