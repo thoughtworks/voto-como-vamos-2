@@ -7,6 +7,7 @@ require 'digest/sha1'
 class SessionVotesPageScraper
 
   include Sidekiq::Worker
+  sidekiq_options backtrace: true
 
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 

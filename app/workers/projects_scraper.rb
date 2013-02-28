@@ -7,6 +7,7 @@ require 'digest/sha1'
 class ProjectsScraper
 
   include Sidekiq::Worker
+  sidekiq_options backtrace: true
 
   def perform
     data = open('http://projetos.camarapoa.rs.gov.br/consultas/em_tramitacao.csv')

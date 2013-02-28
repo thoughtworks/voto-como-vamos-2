@@ -7,6 +7,7 @@ require 'digest/sha1'
 class AssemblymenScraper
 
   include Sidekiq::Worker
+  sidekiq_options backtrace: true
 
   MAIN_URL = 'http://www.camarapoa.rs.gov.br/frames/veread/acessor/veralf.htm'
 
