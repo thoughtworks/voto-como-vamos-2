@@ -9,7 +9,6 @@ node default {
   }
   Exec['apt-get update'] -> Package <| |>
 
-  include votocomovamos::db
-  include votocomovamos::app
+  class{ 'votocomovamos::db': } -> class { 'votocomovamos::app': }
 
 }
