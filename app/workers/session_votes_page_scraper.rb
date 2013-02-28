@@ -38,7 +38,7 @@ class SessionVotesPageScraper
 
       ballot = ScrapedData.create!(
         kind: 'Votação',
-        sha1: Digest::SHA1.hexdigest("#{session[:uuid]}-#{}-#{}"),
+        sha1: Digest::SHA1.hexdigest("#{session.uuid}-#{}-#{}"),
         data: {
           sessao_id: session.sha1,
           horario_inicio: ballot[:horario],
