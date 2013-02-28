@@ -7,7 +7,7 @@ require 'digest/sha1'
 class SessionPageScraper
 
   include Sidekiq::Worker
-  sidekiq_options backtrace: true, throttle: { threshold: 1, period: 1.minute }
+  sidekiq_options backtrace: true, throttle: { threshold: 50, period: 1.hour }
 
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
