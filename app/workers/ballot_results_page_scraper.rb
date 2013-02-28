@@ -12,14 +12,25 @@ class BallotResultsPageScraper
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
   def perform(session_sha1, hash)
-    ballot_details = Nokogiri::HTML open(URI.join(BASE_URL, hash[:details_link]).to_s).read
+    ballot_details = Nokogiri::HTML open(URI.join(BASE_URL, hash['details_link']).to_s).read
 
     text = ballot_details.xpath('//div[@class="box no-box"]').text
-    inicio = hash[:inicio]
+    inicio = hash['inicio']
     encerramento = text.match(/Encerramento:\s+((\d{2}:?){3})/)[1]
     sha1 = Digest::SHA1.hexdigest("#{session_sha1}-#{inicio}-#{encerramento}"),
 
     votacao = ScrapedData.find_by_sha1(sha1)
+
+    data = {
+      sessao_id: session_sha1,
+      horario_inicio: inicio,
+      horario_encerramento: encerramento,
+      proposicao: ballot['proposicao'],
+      tipo: ballot['tipo'],
+      situacao: ballot['situacao'],
+      item_pauta: text.match(/Item pauta:\s+([^\n]+)\n/)[1],
+      ordem_dia: text.match(/Ordem dia:\s+([^\n]+) Resultado/)[1],
+    }
 
     ballot = if votacao
       votacao.data.merge!(data)

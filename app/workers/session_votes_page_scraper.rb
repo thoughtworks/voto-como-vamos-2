@@ -32,7 +32,7 @@ class SessionVotesPageScraper
     end
 
     ballots.map do |ballot|
-      BallotResultsPageScraper.perform_async(session.uuid, ballot)
+      BallotResultsPageScraper.perform_async(session.sha1, ballot)
     end
 
   end
