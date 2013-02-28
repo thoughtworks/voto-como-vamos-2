@@ -16,18 +16,38 @@ class SessionPageScraper
     doc = Nokogiri::HTML html
 
     title = doc.css('#sessao_mais_recente').text.split(/\n/)[2].strip.split
+    data = {
+      data:   title[0],
+      tipo:   title[4],
+      numero: title[2].gsub(/[^\d]/, ''),
+    }
 
-    session = ScrapedData.create!(
-      sha1: Digest::SHA1.hexdigest("#{title[0]}-#{title[4]}-#{title[2].gsub(/[^\d]/, '')}"),
-      kind: 'Sessão',
-      data: {
-        data:   title[0],
-        tipo:   title[4],
-        numero: title[2].gsub(/[^\d]/, ''),
+    sha1 = Digest::SHA1.hexdigest(data.sort.to_s)
+
+    session = if s = ScrapedData.find_by_sha1(sha1)
+      s.data.merge!(data)
+      s.save!
+    else
+      ScrapedData.create!(sha1: sha1, kind: 'Sessão', data: data)
+    end
+
+    table = doc.css('table tr').map(&:text).reject {|x| x == '' }.map {|x| x.split(/\t\t/).map &:strip }
+    details_links = doc.css('table tr a @href').map(&:text).uniq
+    _ = table.shift # discard headers
+
+    i = 0
+    ballots = table.each do |e|
+      {
+        horario: e[0],
+        proposicao: e[1],
+        tipo: e[2],
+        situacao: e[4],
+        details_link: details_links[i].gsub(/parlamentares\?/, 'parlamentares_nome?')
       }
-    )
+      i += 1
 
-    SessionVotesPageScraper.perform_async session.sha1, html
+      BallotResultsPageScraper.perform_async(sha1, e)
+    end
   end
 
 end
