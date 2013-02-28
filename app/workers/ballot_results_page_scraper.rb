@@ -12,7 +12,12 @@ class BallotResultsPageScraper
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
   def perform(session_sha1, hash)
-    ballot_details = Nokogiri::HTML open(URI.join(BASE_URL, hash['details_link']).to_s).read
+    url = URI.join(BASE_URL, hash['details_link']).to_s
+    url_sha1 = Digest::SHA1.hexdigest url
+
+    return if ScrapedData.find_by_sha1 url_sha1
+
+    ballot_details = Nokogiri::HTML open(url).read
 
     text = ballot_details.xpath('//div[@class="box no-box"]').text
     inicio = hash['inicio']
@@ -57,6 +62,8 @@ class BallotResultsPageScraper
         }
       )
     end
+
+    ScrapedData.create! kind: 'Page', sha1: url_sha1, data: { url: url }
   end
 
 end

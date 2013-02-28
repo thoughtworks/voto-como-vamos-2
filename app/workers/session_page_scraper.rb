@@ -12,6 +12,9 @@ class SessionPageScraper
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
   def perform(url)
+    url_sha1 = Digest::SHA1.hexdigest(url)
+    return if ScrapedData.find_by_sha1 url_sha1
+
     html = open(URI.join(BASE_URL, url).to_s).read
     doc = Nokogiri::HTML html
 
@@ -46,8 +49,10 @@ class SessionPageScraper
       }
       i += 1
 
-      BallotResultsPageScraper.perform_async(sha1, ballot)
+      BallotResultsPageScraper.perform_in 5.minutes, sha1, ballot
     end
+
+    ScrapedData.create! kind: 'Page', sha1: url_sha1, data: { url: url }
   end
 
 end

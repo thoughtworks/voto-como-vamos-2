@@ -11,14 +11,19 @@ class SessionsScraper
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
   def perform(url=BASE_URL)
+    url_sha1 = Digest::SHA1.hexdigest url
+    return if ScrapedData.find_by_sha1 url_sha1
+
     index = Nokogiri::HTML open(url).read
 
     index.css('a.sessoes @href').each do |href|
-      SessionPageScraper.perform_async href.text
+      SessionPageScraper.perform_in 5.minutes, href.text
     end
 
     next_link = index.css('a.next_page @href').first
     SessionsScraper.perform_async URI.join(BASE_URL, next_link.text).to_s if next_link
+
+    ScrapedData.create! kind: 'Page', sha1: url_sha1, data: { url: url }
   end
 
 end
