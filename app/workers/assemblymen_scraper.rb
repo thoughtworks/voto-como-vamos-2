@@ -27,7 +27,7 @@ class AssemblymenScraper
       sha1 = Digest::SHA1.hexdigest row[:nome]
 
       if a = ScrapedData.find_by_sha1(sha1)
-        a.data.merge!(data)
+        a.data.merge!(row)
         a.save!
 
       else
