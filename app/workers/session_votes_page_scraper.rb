@@ -29,12 +29,7 @@ class SessionVotesPageScraper
     end
 
     data = ballots.map do |ballot|
-      ballot_details = begin
-        Nokogiri::HTML open(URI.join(BASE_URL, ballot[:details_link]).to_s).read.force_encoding('UTF-8')
-      rescue => e
-        puts "Got exception #{e}"
-        retry
-      end
+      ballot_details = Nokogiri::HTML open(URI.join(BASE_URL, ballot[:details_link]).to_s).read
 
       text = ballot_details.xpath('//div[@class="box no-box"]').text
 
