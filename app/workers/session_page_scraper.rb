@@ -7,7 +7,7 @@ require 'digest/sha1'
 class SessionPageScraper
 
   include Sidekiq::Worker
-  sidekiq_options backtrace: true, throttle: { threshold: 50, period: 1.hour }
+  sidekiq_options backtrace: true, throttle: { threshold: 100, period: 1.hour }
 
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
@@ -37,7 +37,7 @@ class SessionPageScraper
 
     i = 0
     ballots = table.each do |e|
-      {
+      ballot = {
         horario: e[0],
         proposicao: e[1],
         tipo: e[2],
@@ -46,7 +46,7 @@ class SessionPageScraper
       }
       i += 1
 
-      BallotResultsPageScraper.perform_async(sha1, e)
+      BallotResultsPageScraper.perform_async(sha1, ballot)
     end
   end
 
