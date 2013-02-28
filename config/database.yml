@@ -1,7 +1,7 @@
 common: &common
   adapter: postgresql
   encoding: unicode
-  pool: 5
+  pool: 32
   username: vcv
   password: vcv
   host: localhost
