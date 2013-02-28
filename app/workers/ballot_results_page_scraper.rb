@@ -17,21 +17,23 @@ class BallotResultsPageScraper
     text = ballot_details.xpath('//div[@class="box no-box"]').text
     inicio = hash['inicio']
     encerramento = text.match(/Encerramento:\s+((\d{2}:?){3})/)[1]
-    sha1 = Digest::SHA1.hexdigest("#{session_sha1}-#{inicio}-#{encerramento}"),
+    proposicao = hash['proposicao']
+    tipo = hash['tipo']
 
-    votacao = ScrapedData.find_by_sha1(sha1)
+    sha1 = Digest::SHA1.hexdigest(hash['details_link'])
 
     data = {
       sessao_id: session_sha1,
       horario_inicio: inicio,
       horario_encerramento: encerramento,
-      proposicao: ballot['proposicao'],
-      tipo: ballot['tipo'],
-      situacao: ballot['situacao'],
+      proposicao: proposicao,
+      tipo: tipo,
+      situacao: hash['situacao'],
       item_pauta: text.match(/Item pauta:\s+([^\n]+)\n/)[1],
       ordem_dia: text.match(/Ordem dia:\s+([^\n]+) Resultado/)[1],
     }
 
+    votacao = ScrapedData.find_by_sha1(sha1)
     ballot = if votacao
       votacao.data.merge!(data)
       votacao.save!
@@ -46,7 +48,7 @@ class BallotResultsPageScraper
         kind: 'Voto',
         sha1: Digest::SHA1.hexdigest("#{ballot.sha1}-#{e[0]}-#{e[1]}-#{e[2]}"),
         data: {
-          sessao_id: session.sha1,
+          sessao_id: session_sha1,
           votacao_id: ballot.sha1,
 
           parlamentar: e[0],
