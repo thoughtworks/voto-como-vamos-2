@@ -24,11 +24,20 @@ class AssemblymenScraper
       fix_telefones_in row
       fix_links_in row
 
-      ScrapedData.create!(
-        kind: 'Vereador',
-        data: row,
-        sha1: Digest::SHA1.hexdigest(row[:nome])
-      )
+      sha1 = Digest::SHA1.hexdigest row[:nome]
+
+      if a = ScrapedData.find_by_sha1(sha1)
+        a.data.merge!(data)
+        a.save!
+
+      else
+        ScrapedData.create!(
+          kind: 'Vereador',
+          data: row,
+          sha1: sha1
+        )
+      end
+
     end
 
   end
