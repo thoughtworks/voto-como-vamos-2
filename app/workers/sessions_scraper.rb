@@ -2,7 +2,7 @@ require 'open-uri'
 require 'uri'
 require 'nokogiri'
 
-class SessionsWorker
+class SessionsScraper
 
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 

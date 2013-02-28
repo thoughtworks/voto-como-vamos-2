@@ -1,9 +1,9 @@
 require 'open-uri'
 require 'uri'
 require 'nokogiri'
-require 'digest/md5'
+require 'digest/sha1'
 
-class SessionPageWorker
+class SessionPageScraper
 
   include Sidekiq::Worker
 
@@ -19,14 +19,17 @@ class SessionPageWorker
 
     title = html.css('#sessao_mais_recente').text.split(/\n/)[2].strip.split
 
-    assembly_session = AssemblySession.create! {
-      uuid:   Digest::MD5.hexdigest("#{title[0]}-#{title[4]}-#{title[2].gsub(/[^\d]/, '')}"),
-      data:   title[0],
-      tipo:   title[4],
-      numero: title[2].gsub(/[^\d]/, ''),
+    session = ScrapedData.create! {
+      sha1: Digest::SHA1.hexdigest("#{title[0]}-#{title[4]}-#{title[2].gsub(/[^\d]/, '')}"),
+      kind: 'Sessão',
+      data: {
+        data:   title[0],
+        tipo:   title[4],
+        numero: title[2].gsub(/[^\d]/, ''),
+      }
     }
 
-    SessionVotesPageWorker.perform_async assembly_session.uuid, html
+    SessionVotesPageScraper.perform_async session.sha1, html
   end
 
 end

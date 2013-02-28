@@ -1,6 +1,7 @@
 require 'csv'
 require 'nokogiri'
 require 'open-uri'
+require 'digest/sha1'
 
 class ProjectsScraper
 
