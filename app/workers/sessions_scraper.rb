@@ -6,7 +6,7 @@ require 'nokogiri'
 class SessionsScraper
 
   include Sidekiq::Worker
-  sidekiq_options backtrace: true
+  sidekiq_options backtrace: true, throttle: { threshold: 1, period: 1.minute }
 
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
