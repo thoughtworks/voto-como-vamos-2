@@ -19,12 +19,18 @@ class ProjectsScraper
       end
 
       hash['link'] = find_project_href hash['numero']
+      sha1 = Digest::SHA1.hexdigest(hash['link'])
 
-      ScrapedData.create!(
-        kind: 'Projeto',
-        data: hash,
-        sha1: Digest::SHA1.hexdigest(hash['link'])
-      )
+      if p = ScrapedData.find_by_sha1(sha1)
+        p.data.merge!(hash)
+        p.save!
+      else
+        ScrapedData.create!(
+          kind: 'Projeto',
+          data: hash,
+          sha1: sha1
+        )
+      end
     end
   end
 
