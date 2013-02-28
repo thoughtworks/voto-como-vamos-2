@@ -2,7 +2,7 @@ require 'csv'
 require 'nokogiri'
 require 'open-uri'
 
-class ProjectsWorker
+class ProjectsScraper
 
   include Sidekiq::Worker
 
@@ -17,7 +17,11 @@ class ProjectsWorker
 
       hash['link'] = find_project_href hash['numero']
 
-      Projeto.create! hash
+      ScrapedData.create!(
+        kind: 'Projeto',
+        data: hash,
+        sha1: Digest::SHA1.hexdigest(hash['link'])
+      )
     end
   end
 
