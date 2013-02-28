@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAssemblySessions < ActiveRecord::Migration
   def change
     create_table :assembly_sessions do |t|

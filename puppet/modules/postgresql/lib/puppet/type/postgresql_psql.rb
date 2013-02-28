@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.newtype(:postgresql_psql) do
 
   newparam(:name) do

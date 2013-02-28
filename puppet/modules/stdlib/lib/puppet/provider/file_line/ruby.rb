@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 
 Puppet::Type.type(:file_line).provide(:ruby) do
 

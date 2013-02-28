@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 describe 'apt::force', :type => :define do
   let :title do

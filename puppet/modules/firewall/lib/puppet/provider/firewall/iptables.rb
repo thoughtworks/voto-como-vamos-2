@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'puppet/provider/firewall'
 require 'digest/md5'
 

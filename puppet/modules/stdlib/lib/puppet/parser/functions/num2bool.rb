@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #
 # num2bool.rb
 #

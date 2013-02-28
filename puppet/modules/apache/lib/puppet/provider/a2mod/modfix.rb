@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.type(:a2mod).provide :modfix do
     desc "Dummy provider for A2mod.
 

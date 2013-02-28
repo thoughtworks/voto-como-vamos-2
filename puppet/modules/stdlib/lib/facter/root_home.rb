@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # A facter fact to determine the root home directory.
 # This varies on PE supported platforms and may be
 # reconfigured by the end user.

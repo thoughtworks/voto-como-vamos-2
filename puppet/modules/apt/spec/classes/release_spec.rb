@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 describe 'apt::release', :type => :class do
   let (:title) { 'my_package' }

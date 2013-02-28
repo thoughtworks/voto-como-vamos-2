@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Puppet::Parser::Functions
 
   newfunction(:has_key, :type => :rvalue, :doc => <<-'ENDHEREDOC') do |args|

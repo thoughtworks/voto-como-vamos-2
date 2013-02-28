@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.type(:a2mod).provide(:a2mod) do
     desc "Manage Apache 2 modules on Debian and Ubuntu"
 

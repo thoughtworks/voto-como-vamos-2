@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 
 describe Puppet::Parser::Functions.function(:validate_absolute_path) do

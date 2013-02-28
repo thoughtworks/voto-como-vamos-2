@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ScrapedData < ActiveRecord::Base
   serialize :data, ActiveRecord::Coders::Hstore
 

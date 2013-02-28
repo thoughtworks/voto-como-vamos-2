@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Puppet::Parser::Functions
   newfunction(:validate_re, :doc => <<-'ENDHEREDOC') do |args|
     Perform simple validation of a string against one or more regular

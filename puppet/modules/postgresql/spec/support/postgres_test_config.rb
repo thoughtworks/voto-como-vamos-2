@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module PostgresTestConfig
   # Tests are pretty slow w/sahara, and when we destroy the VMs at the beginning
   #  of the test run.  This can be a hindrance for development but is very

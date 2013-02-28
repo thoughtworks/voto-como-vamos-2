@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Puppet::Parser::Functions
  newfunction(:pick, :type => :rvalue, :doc => <<-EOS
 

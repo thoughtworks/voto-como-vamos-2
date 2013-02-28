@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module PostgresTestUtils
   def sudo_and_log(vm, cmd)
     @logger.debug("Running command: '#{cmd}'")

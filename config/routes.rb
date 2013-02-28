@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 VotoComoVamos2::Application.routes.draw do
 
   get '/' => 'welcome#index', as: :welcome

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ENV['FOG_MOCK'] ||= 'true'
 ENV['AUTOTEST'] = 'true'
 ENV['WATCHR']   = '1'

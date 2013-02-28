@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 def apply_common_vagrant_config(config)
   # Resolve DNS via NAT
   config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.type(:postgresql_psql).provide(:ruby) do
 
   def command()

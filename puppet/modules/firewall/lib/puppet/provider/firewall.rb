@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Puppet::Provider::Firewall < Puppet::Provider
 
   # Prefetch our rule list. This is ran once every time before any other

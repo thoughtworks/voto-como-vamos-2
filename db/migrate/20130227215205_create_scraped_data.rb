@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateScrapedData < ActiveRecord::Migration
 
   def change

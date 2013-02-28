@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.newtype(:a2mod) do
     @doc = "Manage Apache 2 modules"
 

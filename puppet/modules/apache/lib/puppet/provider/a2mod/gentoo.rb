@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'puppet/util/filetype'
 Puppet::Type.type(:a2mod).provide(:gentoo, :parent => Puppet::Provider) do
   desc "Manage Apache 2 modules on Gentoo"

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module PuppetSpec::Fixtures
   def fixtures(*rest)
     File.join(PuppetSpec::FIXTURE_DIR, *rest)

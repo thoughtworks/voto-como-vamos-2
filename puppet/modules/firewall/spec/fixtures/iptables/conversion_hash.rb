@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # These hashes allow us to iterate across a series of test data
 # creating rspec examples for each parameter to ensure the input :line
 # extrapolates to the desired value for the parameter in question. And

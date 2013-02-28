@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Puppet::Parser::Functions
   newfunction(:max, :type => :rvalue, :doc => <<-EOS
     Returns the highest value of all arguments.

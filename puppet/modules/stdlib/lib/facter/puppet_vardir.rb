@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # This facter fact returns the value of the Puppet vardir setting for the node
 # running puppet or puppet agent.  The intent is to enable Puppet modules to
 # automatically have insight into a place where they can place variable data,

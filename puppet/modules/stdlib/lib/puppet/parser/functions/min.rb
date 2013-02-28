@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Puppet::Parser::Functions
   newfunction(:min, :type => :rvalue, :doc => <<-EOS
     Returns the lowest value of all arguments.

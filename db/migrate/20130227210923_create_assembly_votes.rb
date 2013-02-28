@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAssemblyVotes < ActiveRecord::Migration
   def change
     create_table :assembly_votes do |t|

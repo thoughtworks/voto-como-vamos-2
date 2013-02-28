@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Puppet::Parser::Functions
   newfunction(:to_bytes, :type => :rvalue, :doc => <<-EOS
     Converts the argument into bytes, for example 4 kB becomes 4096.

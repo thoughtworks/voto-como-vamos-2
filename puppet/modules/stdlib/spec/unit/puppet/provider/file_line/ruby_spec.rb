@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'puppet'
 require 'tempfile'
 provider_class = Puppet::Type.type(:file_line).provider(:ruby)

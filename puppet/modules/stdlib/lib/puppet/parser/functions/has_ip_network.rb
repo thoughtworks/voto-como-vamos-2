@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #
 # has_ip_network
 #

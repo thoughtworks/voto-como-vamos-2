@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DropAssemblyVotes < ActiveRecord::Migration
 
   def up

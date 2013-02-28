@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'support/shared_examples/non_default_postgres'
 
 describe "CentOS6, 64-bit: non-default postgres" do

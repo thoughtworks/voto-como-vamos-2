@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.type(:firewall).provide :ip6tables, :parent => :iptables, :source => :iptables do
   @doc = "Ip6tables type provider"
 

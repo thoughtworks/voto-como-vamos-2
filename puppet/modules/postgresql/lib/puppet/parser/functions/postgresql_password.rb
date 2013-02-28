@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # hash a string as mysql's "PASSWORD()" function would do it
 require 'digest/md5'
 

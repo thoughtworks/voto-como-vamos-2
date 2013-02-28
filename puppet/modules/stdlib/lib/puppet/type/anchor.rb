@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.newtype(:anchor) do
   desc <<-'ENDOFDESC'
   A simple resource type intended to be used as an anchor in a composite class.

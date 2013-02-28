@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateProjetos < ActiveRecord::Migration
 
   def change

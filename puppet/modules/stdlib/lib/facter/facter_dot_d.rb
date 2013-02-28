@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # A Facter plugin that loads facts from /etc/facter/facts.d
 # and /etc/puppetlabs/facter/facts.d.
 #

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Puppet::Parser::Functions
   newfunction(:get_module_path, :type =>:rvalue, :doc => <<-EOT
     Returns the absolute path of the specified module for the current

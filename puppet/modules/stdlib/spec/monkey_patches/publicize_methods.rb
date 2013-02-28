@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Some monkey-patching to allow us to test private methods.
 class Class
     def publicize_methods(*methods)

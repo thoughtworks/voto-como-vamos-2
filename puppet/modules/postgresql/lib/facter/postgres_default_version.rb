@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 def get_debianfamily_postgres_version
   case Facter.value('operatingsystem')
     when "Debian"

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SetupHstore < ActiveRecord::Migration
   def self.up
     execute "CREATE EXTENSION IF NOT EXISTS hstore"

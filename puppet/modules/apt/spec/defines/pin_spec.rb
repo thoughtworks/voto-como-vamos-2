@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 describe 'apt::pin', :type => :define do
   let(:title) { 'my_pin' }

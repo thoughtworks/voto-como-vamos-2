@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #
 # delete_at.rb
 #

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Facter
   module Util
     module PuppetSettings

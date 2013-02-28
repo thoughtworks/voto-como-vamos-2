@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Test whether a given class or definition is defined
 require 'puppet/parser/functions'
 

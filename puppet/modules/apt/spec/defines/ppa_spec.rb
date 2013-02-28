@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 describe 'apt::ppa', :type => :define do
   [ { :lsbdistrelease => '11.04',

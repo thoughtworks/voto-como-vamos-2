@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'support/postgres_test_utils'
 require 'support/shared_contexts/pg_vm_context'
 

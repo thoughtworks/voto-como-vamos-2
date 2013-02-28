@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'puppet'
 require 'tempfile'
 describe Puppet::Type.type(:file_line) do

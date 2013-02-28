@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #
 # ensure_packages.rb
 #

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'support/shared_examples/system_default_postgres'
 
 describe "Ubuntu Lucid, 64-bit: default system postgres" do

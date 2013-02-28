@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.newtype(:rbenvgem) do
   desc 'A Ruby Gem installed inside an rbenv-installed Ruby'
 

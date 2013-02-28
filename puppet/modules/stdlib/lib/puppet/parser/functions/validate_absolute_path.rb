@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Puppet::Parser::Functions
   newfunction(:validate_absolute_path, :doc => <<-'ENDHEREDOC') do |args|
     Validate the string represents an absolute path in the filesystem.  This function works

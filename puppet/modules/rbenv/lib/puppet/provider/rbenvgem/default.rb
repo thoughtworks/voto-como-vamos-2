@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Puppet::Type.type(:rbenvgem).provide :default do
   desc "Maintains gems inside an RBenv setup"
 

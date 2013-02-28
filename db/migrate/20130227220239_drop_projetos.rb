@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DropProjetos < ActiveRecord::Migration
 
   def up

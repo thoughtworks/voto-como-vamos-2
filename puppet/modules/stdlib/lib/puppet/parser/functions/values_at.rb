@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #
 # values_at.rb
 #

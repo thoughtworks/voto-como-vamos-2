@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #
 # fqdn_rotate.rb
 #
