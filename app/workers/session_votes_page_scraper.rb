@@ -11,6 +11,7 @@ class SessionVotesPageScraper
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
   def perform(session_id, session_html)
+    session_html = Nokogiri::HTML(session_html)
     session = ScrapedData.find_by_sha1 session_id
     table = session_html.css('table tr').map(&:text).reject {|x| x == "" }.map {|x| x.split(/\t\t/).map &:strip }
     details_links = session_html.css('table tr a @href').map(&:text).uniq
@@ -34,7 +35,7 @@ class SessionVotesPageScraper
 
       text = ballot_details.xpath('//div[@class="box no-box"]').text
 
-      ballot = ScrapedData.create! {
+      ballot = ScrapedData.create!(
         kind: 'Votação',
         sha1: Digest::SHA1.hexdigest("#{session[:uuid]}-#{}-#{}"),
         data: {
@@ -47,12 +48,12 @@ class SessionVotesPageScraper
           item_pauta: text.match(/Item pauta:\s+([^\n]+)\n/)[1],
           ordem_dia: text.match(/Ordem dia:\s+([^\n]+) Resultado/)[1],
         }
-      }
+      )
 
       table = ballot_details.css('table.list tr')
       table.shift # discarta header
       table.map {|tr| tr.text.split(/\n/)[0,3].map &:strip }.each do |e|
-        ScrapedData.create! {
+        ScrapedData.create!(
           kind: 'Voto',
           sha1: Digest::SHA1.hexdigest("#{ballot.sha1}-#{e[0]}-#{e[1]}-#{e[2]}"),
           data: {
@@ -63,7 +64,7 @@ class SessionVotesPageScraper
             partido: e[1],
             voto: e[2],
           }
-        }
+        )
       end
     end
   end

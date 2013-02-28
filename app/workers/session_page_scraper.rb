@@ -11,9 +11,10 @@ class SessionPageScraper
   BASE_URL = 'http://votacoes.camarapoa.rs.gov.br/'
 
   def perform(url)
-    html = Nokogiri::HTML open(URI.join(BASE_URL, url).to_s).read
+    html = open(URI.join(BASE_URL, url).to_s).read
+    doc = Nokogiri::HTML html
 
-    title = html.css('#sessao_mais_recente').text.split(/\n/)[2].strip.split
+    title = doc.css('#sessao_mais_recente').text.split(/\n/)[2].strip.split
 
     session = ScrapedData.create!(
       sha1: Digest::SHA1.hexdigest("#{title[0]}-#{title[4]}-#{title[2].gsub(/[^\d]/, '')}"),

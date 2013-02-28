@@ -24,9 +24,9 @@ class AssemblymenScraper
       fix_links_in row
 
       ScrapedData.create!(
-        kind: 'Vereadores',
+        kind: 'Vereador',
         data: row,
-        hash: Digest::SHA1.hexdigest(row[:nome])
+        sha1: Digest::SHA1.hexdigest(row[:nome])
       )
     end
 
