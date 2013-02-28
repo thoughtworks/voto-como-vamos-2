@@ -14,7 +14,7 @@ class SessionPageScraper
 
     title = html.css('#sessao_mais_recente').text.split(/\n/)[2].strip.split
 
-    session = ScrapedData.create! {
+    session = ScrapedData.create!(
       sha1: Digest::SHA1.hexdigest("#{title[0]}-#{title[4]}-#{title[2].gsub(/[^\d]/, '')}"),
       kind: 'Sessão',
       data: {
@@ -22,7 +22,7 @@ class SessionPageScraper
         tipo:   title[4],
         numero: title[2].gsub(/[^\d]/, ''),
       }
-    }
+    )
 
     SessionVotesPageScraper.perform_async session.sha1, html
   end
