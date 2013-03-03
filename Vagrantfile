@@ -6,7 +6,7 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 80, 8000
 
   options = {
-    :module_path => 'puppet/modules',
+    :module_path => ['puppet/modules', 'puppet/modules/vendors'],
     :facter => {
       :fqdn => 'precise.vagrant'
     }
@@ -15,7 +15,7 @@ Vagrant::Config.run do |config|
   config.vm.provision :puppet, options do |puppet|
     puppet.manifests_path = 'puppet'
     puppet.manifest_file  = 'site.pp'
-    puppet.options        = %w[ --libdir=\\$modulepath/rbenv/lib --verbose --debug]
+    puppet.options        = %w[ --libdir=modules/vendors/rbenv/lib --verbose --debug]
   end
 
 end
