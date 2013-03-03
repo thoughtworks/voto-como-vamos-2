@@ -13,6 +13,7 @@ class votocomovamos::app {
       global => true,
     ;
   }
+  Rbenv::Gem['rbenv::bundler vagrant 1.9.3-p385'] -> Exec['rbenv::rehash vagrant 1.9.3-p385']
 
   $passenger_version = '3.0.19'
   $gem_path = '/opt/vagrant_ruby/lib/ruby/gems/1.8/gems'
@@ -21,7 +22,6 @@ class votocomovamos::app {
   class {
     'apache':
     ;
-
     'passenger':
       passenger_package      => 'passenger',
       passenger_version      => $passenger_version,
@@ -32,6 +32,7 @@ class votocomovamos::app {
       require                => Bundler::Install['/vagrant'],
     ;
   }
+  Class[passenger] -> Service['httpd']
 
   apache::vhost {
     'vcv':
