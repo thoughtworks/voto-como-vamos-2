@@ -6,6 +6,12 @@ VotoComoVamos2::Application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/jobs'
 
+  require 'gollum/frontend/app'
+  Precious::App.set(:gollum_path, Rails.root)
+  Precious::App.set(:default_markup, :markdown)
+  Precious::App.set(:wiki_options, page_file_dir: 'wiki', universal_toc: false)
+  mount Precious::App => '/admin'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

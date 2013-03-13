@@ -18,7 +18,7 @@ html
           a href=welcome_path Voto Como Vamos
         = content_for :nav
 
-        #counter-area 
+        #counter-area
           p Estamos há
           p.counter 56
           p dias sem sessões na Câmara.
@@ -27,8 +27,13 @@ html
         = yield
 
       #footer
+        = content_for :footer
+        - if @page
+          | Última atualização em
+          = @page.versions.first.authored_date.strftime '%d/%m/%Y %H:%M'
+          | , por
+          = mail_to @page.versions.first.author.email
         p
           | &copy; 2013 Voto Como Vamos. Todos os direitos reservados.
         p
           a href="http://github.com/thoughtworks/voto-como-vamos-2" GitHub
-        = content_for :footer

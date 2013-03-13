@@ -30,6 +30,11 @@ gem 'rdiscount'
 gem 'jquery-rails'
 gem 'd3-rails'
 
+# wiki
+gem 'gollum'
+gem 'github-markdown'
+gem 'wikicloth'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
