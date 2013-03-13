@@ -29,10 +29,7 @@ html
       #footer
         = content_for :footer
         - if @page
-          | Última atualização em
-          = @page.versions.first.authored_date.strftime '%d/%m/%Y %H:%M'
-          | , por
-          = mail_to @page.versions.first.author.email
+          = "Última atualização em #{@page.versions.first.authored_date.strftime '%d/%m/%Y %H:%M'}, por #{mail_to @page.versions.first.author.email}".html_safe
         p
           | &copy; 2013 Voto Como Vamos. Todos os direitos reservados.
         p
