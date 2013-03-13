@@ -1,13 +1,4 @@
 # -*- encoding : utf-8 -*-
-
-class ExistingWikiPageConstraint
-
-  def matches?(request)
-    request.params[:page]
-  end
-
-end
-
 VotoComoVamos2::Application.routes.draw do
 
   root to: 'wiki#display', as: :home, defaults: { page: 'Home' }
@@ -21,7 +12,8 @@ VotoComoVamos2::Application.routes.draw do
   Precious::App.set(:wiki_options, page_file_dir: 'wiki', universal_toc: false)
   mount Precious::App => '/admin'
 
-  get '/:page' => 'wiki#display', as: :wiki
+  get '/:page'      => 'wiki#display', as: :wiki
+  get '/wiki/:page' => redirect('/%{page}')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
