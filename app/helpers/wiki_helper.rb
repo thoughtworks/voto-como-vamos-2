@@ -1,3 +1,3 @@
 # -*- encoding : utf-8 -*-
-module WelcomeHelper
+module WikiHelper
 end
