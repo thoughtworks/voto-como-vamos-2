@@ -1,6 +1,0 @@
-* [[O que é|sobre]]
-* [[Câmara|camara]]
-* [[Parlamentares]]
-* [[Votações|votacoes]]
-* [[Projetos]]
-* [[Acompanhe seu parlamentar|acompanhe]]
