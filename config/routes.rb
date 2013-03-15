@@ -12,8 +12,7 @@ VotoComoVamos2::Application.routes.draw do
   Precious::App.set(:wiki_options, ref: 'wiki', universal_toc: false)
   mount Precious::App => '/admin'
 
-  get '/wiki/:page' => 'wiki#display', as: :wiki
-  get '/:page'      => redirect('/wiki/%{page}')
+  get '/:page' => 'wiki#display', as: :wiki
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
