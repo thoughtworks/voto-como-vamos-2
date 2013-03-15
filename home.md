@@ -1,6 +1,6 @@
 ## Bem-vindo ao Voto Como Vamos!
 
-Phasellus nulla massa, faucibus eu tempor sed, molestie nec dui. Maecenas sit amet turpis et sapien interdum fringilla. Mauris facilisis rutrum nisi a sodales. Cras felis ligula, tempor vel elementum sit amet, eleifend vel nulla. Vestibulum volutpat neque id orci viverra ac sollicitudin augue aliquam.
+Phasellus nulla massa, faucibus eu tempor sed, molestie nec dui. Maecenas sit amet turpis et sapien interdum fringilla. Mauris facilisis rutrum nisi a sodales. [[Votações|votacoes]] Cras felis ligula, tempor vel elementum sit amet, eleifend vel nulla. Vestibulum volutpat neque id orci viverra ac sollicitudin augue aliquam.
 
 * Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 * Praesent et justo ut tortor faucibus vestibulum nec eu urna.
