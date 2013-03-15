@@ -1,5 +1,7 @@
 class votocomovamos::app {
 
+  $ruby_version = '1.9.3-p392'
+
   rbenv::install {
     'vagrant':
       home => '/home/vagrant'
@@ -7,21 +9,21 @@ class votocomovamos::app {
   }
 
   rbenv::compile {
-    '1.9.3-p385':
+    $ruby_version:
       user   => 'vagrant',
       home   => '/home/vagrant',
       global => true,
     ;
   }
-  Rbenv::Gem['rbenv::bundler vagrant 1.9.3-p385'] -> Exec['rbenv::rehash vagrant 1.9.3-p385']
+  Rbenv::Gem["rbenv::bundler vagrant ${ruby_version}"] -> Exec["rbenv::rehash vagrant ${ruby_version}"]
 
   $passenger_version = '3.0.19'
   $gem_path = '/opt/vagrant_ruby/lib/ruby/gems/1.8/gems'
 
-
   class {
     'apache':
     ;
+
     'passenger':
       passenger_package      => 'passenger',
       passenger_version      => $passenger_version,
@@ -32,7 +34,8 @@ class votocomovamos::app {
       require                => Bundler::Install['/vagrant'],
     ;
   }
-  Class[passenger] -> Service['httpd']
+
+  Class['passenger'] -> Service['httpd']
 
   apache::vhost {
     'vcv':
@@ -51,10 +54,9 @@ class votocomovamos::app {
       gem_bin_path => '/home/vagrant/.rbenv/shims',
       user         => 'vagrant',
       group        => 'vagrant',
-      require      => Rbenv::Gem['rbenv::bundler vagrant 1.9.3-p385'],
+      require      => Rbenv::Gem["rbenv::bundler vagrant ${ruby_version}"],
+      ruby_version => $ruby_version
     ;
   }
 
 }
-
-
