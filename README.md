@@ -14,24 +14,16 @@ Installation and Development
 
 All development is being done inside a [Vagrant][1] box, so you'll
 need it installed and working on your system before you begin. We
-are using a standard [Ubuntu Precise 64 box][2], which you'll need
-to grab and add to your Vagrant inventory:
+are using a standard [Ubuntu Precise 64 box][2], which will get
+downloaded and added to your Vagrant inventory when you run `vagrant up`.
 
 [1]: http://www.vagrantup.com
 [2]: http://files.vagrantup.com/precise64.box
 
-```
-$ vagrant box add precise http://files.vagrantup.com/precise64.box
-```
-
-Let Vagrant do the rest from there (you need to be online for this):
-
-```
-$ vagrant up
-```
-
 The box should then be booted, updated, provisioned and you'll have
 a working version of the application under [localhost:8000][3].
+
+[3]: http://localhost:8000
 
 To do any work, we'd rather rely on the Vagrant setup (otherwise,
 you'd have to run Redis, PostgreSQL and the full stack on your local
@@ -67,11 +59,17 @@ Database adapter          postgresql
 Database schema version   0
 ```
 
-[3]: http://localhost:8000
+Wiki
+----
 
-*Note*: provisioning and deployment are still being worked on, so
-there will be a few failures. Please help us with pull requests
-and bug reports!
+Most pages on the application are wikis, and they live in a separate
+branch, `wiki`. To edit them, go to [localhost:8000/admin][5] and
+change content to your liking. Every edit generates a commit in the
+branch, so remember to push your changes with:
+
+`git push origin wiki`
+
+[5]: http://localhost:8000/admin
 
 Contributing
 ------------
