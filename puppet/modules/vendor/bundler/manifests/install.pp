@@ -22,6 +22,7 @@ define bundler::install(
   $without      = undef,
   $gem_bin_path = undef,
   $ruby_version = undef,
+  $real_user    = undef,
 ) {
 
   include bundler
@@ -41,7 +42,7 @@ define bundler::install(
     cwd         => $name,
     path        => "${gem_bin_path}:/bin:/usr/bin:/usr/local/bin",
     unless      => 'bundle check',
-    require     => Rbenv::Gem["rbenv::bundler vagrant ${ruby_version}"],
+    require     => Rbenv::Gem["rbenv::bundler ${real_user} ${ruby_version}"],
     logoutput   => on_failure,
     environment => "HOME='${name}'",
   }

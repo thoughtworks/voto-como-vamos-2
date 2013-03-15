@@ -11,7 +11,6 @@ node default {
 
   Exec['apt-get update'] -> Package <| |>
 
-  class{ 'votocomovamos::db': } -> class { 'votocomovamos::app': }
-  include votocomovamos::sidekiq
+  class { 'votocomovamos::db': } -> class { 'votocomovamos::app': } -> class { 'votocomovamos::sidekiq': }
 
 }

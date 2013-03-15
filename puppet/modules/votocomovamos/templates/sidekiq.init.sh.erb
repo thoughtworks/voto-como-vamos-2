@@ -10,7 +10,7 @@
 # Exit Code 5 - Incorrect User ID
 # Exit Code 6 - Directory not found
 
-APP_DIR="/vagrant"
+APP_DIR="/vcv2"
 APP_CONFIG="${APP_DIR}/config"
 LOG_FILE="${APP_DIR}/log/sidekiq.log"
 LOCK_FILE="${APP_DIR}/tmp/sidekiq.lock"
@@ -18,7 +18,7 @@ PID_FILE="${APP_DIR}/tmp/sidekiq.pid"
 GEMFILE="${APP_DIR}/Gemfile"
 SIDEKIQ="sidekiq"
 APP_ENV="development"
-BUNDLE="/home/vagrant/.rbenv/shims/bundle"
+BUNDLE="/home/<%= @user %>/.rbenv/shims/bundle"
 
 START_CMD="$BUNDLE exec $SIDEKIQ -e $APP_ENV -P $PID_FILE"
 RETVAL=0

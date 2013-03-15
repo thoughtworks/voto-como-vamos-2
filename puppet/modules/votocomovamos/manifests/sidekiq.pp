@@ -1,11 +1,14 @@
-class votocomovamos::sidekiq {
+class votocomovamos::sidekiq(
+  $app_root = '/vcv2',
+  $user = 'vcv2',
+) {
 
   file {
     '/etc/init.d/sidekiq':
       ensure  => 'file',
       mode    => '0700',
       require => Class['votocomovamos::app'],
-      content => template('votocomovamos/sidekiq.init.sh'),
+      content => template('votocomovamos/sidekiq.init.sh.erb'),
       owner   => 'root',
       group   => 'root',
     ;
