@@ -8,6 +8,7 @@ class votocomovamos::app(
   user {
     $user:
       home       => '/home/vcv2',
+      shell      => '/bin/bash',
       ensure     => 'present',
       managehome => true,
       comment    => 'vcv2 daemon user',

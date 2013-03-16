@@ -2,7 +2,7 @@
 
 # Runs whatever inside the vagrant box
 function v {
-  vagrant ssh -c "cd /vcv2 && $*"
+  vagrant ssh -c "sudo -u vcv2 -i -- bash -c 'cd /vcv2 && $*'"
 }
 
 # Runs whatever rake task inside the vagrant box
