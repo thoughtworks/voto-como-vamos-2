@@ -56,21 +56,6 @@ a:hover {
       }
     }
 
-    #counter-area {
-      margin: 40px 0 0 0;
-      text-align: center;
-      width: 80%;
-
-      .counter {
-        font-family: 'Yanone Kaffeesatz', sans-serif;
-        font-size: 5em;
-        font-weight: 600;
-        color: #07AFE9;
-        line-height: 1.5em;
-      }
-    }
-
-    
     ul {
       margin-top: 1em;
 
@@ -99,7 +84,7 @@ a:hover {
 
   #content {
     float: right;
-    width: 62.5%;
+    width: 69.5%;
 
     h2 {
       font-size: 2em;
@@ -112,21 +97,6 @@ a:hover {
       margin-bottom: 2em;
       line-height: 1.2em;
     }
-
-    .boxes {
-      display: block;
-
-      h3 {
-        margin-bottom: .5em;
-        font-family: 'Yanone Kaffeesatz', sans-serif;
-        font-size: 16pt;
-      }
-
-      li {
-        display: inline-block;
-        width: 30%;
-      }
-    }
   }
 
   #footer {
@@ -136,10 +106,6 @@ a:hover {
     text-align: center;
     position: relative;
     bottom: 0;
-}
+  }
 
 }
-
-
-
-

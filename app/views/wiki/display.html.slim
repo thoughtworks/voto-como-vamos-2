@@ -1,25 +1,7 @@
 = content_for :title do
-  | Bem-vindo ao Voto Como Vamos!
+  = @page.title.titleize
 
 = content_for :nav do
   = @page.sidebar.formatted_data.html_safe
 
 = @page.formatted_data.html_safe
-
-h2 Hoje na Câmara
-
-ul.boxes
-  li
-    h3 Última sessão
-    img src="/assets/graph1.png"/
-    p Spare ribs prosciutto
-
-  li
-    h3 Bacon filet
-    img src="/assets/graph1.png"/
-    p Steak sausage
-
-  li
-    h3 Pastrami burger
-    img src="/assets/graph1.png"/
-    p Jerky beef
